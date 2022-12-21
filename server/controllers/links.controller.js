@@ -47,37 +47,35 @@ export const getLinkById = async (req, res) => {
 // POST- Add links
 
 export const addLink = async (req, res) => {
-  // try {
-  //   const { title, link, category, upVotes, tags, discussions } = req.body;
+  try {
+    const { title, link, category, upVotes, tags, discussions } = req.body;
 
-  //   const createLink = await Link.create({
-  //     title,
-  //     link,
-  //     category,
-  //     upVotes,
-  //     tags,
-  //     discussions,
-  //   });
+    const createLink = await Link.create({
+      title,
+      link,
+      category,
+      upVotes,
+      tags,
+      discussions,
+    });
 
-  //   console.log(createLink);
+    console.log(createLink);
 
-  //   if (createLink) {
-  //     res.status(201).json({
-  //       status: "ok",
-  //       createLink,
-  //     });
-  //   } else {
-  //     res.status(501).json({
-  //       message: "Soemthing went wrong while creating",
-  //     });
-  //   }
-  // } catch (error) {
-  //   // todo- check status codes
-  //   res.status(400).json({
-  //     message: "something went wrong",
-  //     error: e.message,
-  //   });
-  // }
-
-  res.send("works");
+    if (createLink) {
+      res.status(201).json({
+        status: "ok",
+        createLink,
+      });
+    } else {
+      res.status(501).json({
+        message: "Soemthing went wrong while creating",
+      });
+    }
+  } catch (error) {
+    // todo- check status codes
+    res.status(400).json({
+      message: "something went wrong",
+      error: e.message,
+    });
+  }
 };

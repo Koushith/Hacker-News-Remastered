@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const HomeScreen = () => {
   const [news, setNews] = useState<any>([]);
@@ -18,7 +19,14 @@ export const HomeScreen = () => {
   return (
     <>
       {news.map((n: any, index: number) => (
-        <ul key={n._id}>{n.title}</ul>
+        <Link to={`/news-details/${n._id}`}>
+          <ul key={n._id}>
+            <span>{index + 1}</span>
+            {n.title}
+            <span>{n.createdAt}</span> <br />
+            <span>{n.category}</span>
+          </ul>
+        </Link>
       ))}
     </>
   );
