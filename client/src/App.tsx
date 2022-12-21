@@ -1,32 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
+import { HomeScreen, NewsDetails, SubmitNews } from "./screens";
 
 function App() {
-  const [links, setLinks] = useState<any>([]);
-
-  const fetchAllLists = async () => {
-    let { data } = await axios.get("http://localhost:5000/links");
-    console.log(data);
-    setLinks(data.links);
-  };
-
-  console.log("links", links);
-
-  useEffect(() => {
-    fetchAllLists();
-  }, []);
   return (
-    <div className="App">
-      <h1>hello world</h1>
-      {links.map((link: any) => (
-        <div key={link._id}>
-          <h1>{link.title}</h1>
-          <h1>{link.category}</h1>
-        </div>
-      ))}
-    </div>
+    <Routes>
+      <Route path="/" element={<HomeScreen />} />
+      <Route path="/news-details/:id" element={<NewsDetails />} />
+      <Route path="/submit-news" element={<SubmitNews />} />
+    </Routes>
   );
 }
 
