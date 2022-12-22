@@ -45,7 +45,7 @@ export const SubmitNews = () => {
         onChange={(e: any) => setCategory(e.target.value)}
       />
       <br />
-      {/* todo- remove tags */}
+      {/* todo- remove tags... */}
       <br />
       {/* <input type="text" placeholder="" /> */}
       <button onClick={handleSubmit}>Submit</button>
