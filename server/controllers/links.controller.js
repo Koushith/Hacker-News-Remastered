@@ -44,6 +44,34 @@ export const getLinkById = async (req, res) => {
   }
 };
 
+// PUT -Edit Link
+
+export const editLink = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, category, link } = req.body;
+
+    console.log({ title, category, link, id });
+
+    const _link = await Link.findByIdAndUpdate(id, {
+      title,
+      category,
+      link,
+    });
+
+    res.status(200).json({
+      message: "success",
+      _link,
+    });
+  } catch (e) {
+    // todo- check status codes
+    res.status(400).json({
+      message: "something went wrong while editing",
+      error: e.message,
+    });
+  }
+};
+
 // POST- Add links
 
 export const addLink = async (req, res) => {

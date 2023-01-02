@@ -1,3 +1,4 @@
+import { isEditable } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -8,6 +9,12 @@ export const NewsDetails = () => {
 
   const [news, setNews] = useState<any>([]);
   const [comment, setComment] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+
+  const [category, setCategory] = useState(news.category);
+  console.log("catttttt", category);
 
   const { id } = useParams();
 
@@ -23,25 +30,40 @@ export const NewsDetails = () => {
 
   useEffect(() => {
     fetchNewsDetails();
-  }, []);
+  }, [isEdit]);
 
   const editHandler = () => {
     setIsEdit(!isEdit);
+    setIsCommentable(false);
   };
 
   const discussHandler = () => {
     setIsCommentable(!isCommentable);
+    setIsEdit(false);
   };
 
   const deleteHandler = () => {};
 
+  const editSaveHandler = async () => {
+    console.log({ title, category, link });
+
+    const data = await axios.put(`http://localhost:5000/links/${id}`, {
+      title,
+      category,
+      link,
+    });
+    setIsEdit(false);
+    console.log(":dayaa", data);
+  };
+
   return (
     <div style={{ marginLeft: "800px" }}>
-      News det
+      News details
       <p>{news?.category}</p>
       <p>{news.title}</p>
       <p>{news.link}</p>
       <p>{news.createdAt}</p>
+      <p>{news.upVotes} -votes</p>
       <button onClick={editHandler}>Edit</button>
       <button onClick={discussHandler}>Discuss</button>
       <button onClick={deleteHandler}>Delete</button>
@@ -54,7 +76,41 @@ export const NewsDetails = () => {
       )}
       {isEdit && (
         <>
-          <div>form</div>
+          <div style={{ marginTop: "40px" }}>Edit form</div>
+          <div>
+            <label htmlFor="title">title</label>
+            <input
+              type="text"
+              placeholder={news.title}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="link">link</label>
+            <input
+              type="text"
+              placeholder={news.link}
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="category">category- {category}</label>
+            <input
+              type="text"
+              placeholder={news.category}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            />
+          </div>
+          {/* check later */}
+          {/* <div>
+            <label htmlFor="tags">title</label>
+            <input type="text" placeholder="tags" />
+          </div> */}
+
+          <button onClick={editSaveHandler}>Save Changes</button>
         </>
       )}
     </div>
