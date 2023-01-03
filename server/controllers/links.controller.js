@@ -132,7 +132,7 @@ export const deleteLink = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       message: "something went wrong",
-      error: e.message,
+      error: error.message,
     });
   }
 };

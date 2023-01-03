@@ -29,13 +29,20 @@ export const HomeScreen = () => {
     border-radius: 0.5px;
   `;
 
+  const deleteHandler = async () => {
+    const deleteNews = await axios.delete(
+      `http://localhost:5000/links/${news._id}`
+    );
+    console.log("deleteeeeee", deleteNews);
+  };
+
   return (
     <div>
       <>
         <LinksContainer>
           {news.map((n: any, index: number) => (
             <div key={n._id}>
-              <News news={n} index={index} />
+              <News news={n} index={index} deleteHandler={deleteHandler} />
             </div>
           ))}
         </LinksContainer>

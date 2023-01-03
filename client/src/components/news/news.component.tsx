@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -37,7 +38,7 @@ const LinksWrapper = styled.div`
 `;
 
 export const News = (props: any) => {
-  const { news, index } = props;
+  const { news, index, deleteHandler } = props;
 
   const navigate = useNavigate();
 
@@ -56,7 +57,7 @@ export const News = (props: any) => {
 
         <div className="actions-container">
           <p>0 pts by koushith </p> <span>Discuss</span>| <span>Edit</span>|{" "}
-          <span>Delete</span>
+          <span onClick={deleteHandler}>Delete</span>
         </div>
       </div>
     </LinksWrapper>
