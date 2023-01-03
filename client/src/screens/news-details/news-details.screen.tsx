@@ -1,7 +1,7 @@
 import { isEditable } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const NewsDetails = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -17,6 +17,7 @@ export const NewsDetails = () => {
   console.log("catttttt", category);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const fetchNewsDetails = async () => {
     const {
@@ -42,7 +43,13 @@ export const NewsDetails = () => {
     setIsEdit(false);
   };
 
-  const deleteHandler = () => {};
+  const deleteHandler = async () => {
+    const deleteNews = await axios.delete(`http://localhost:5000/links/${id}`);
+    console.log("deleteeeeee", deleteNews);
+    if (deleteNews) {
+      navigate("/");
+    }
+  };
 
   const editSaveHandler = async () => {
     console.log({ title, category, link });

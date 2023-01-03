@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addLink,
+  deleteLink,
   editLink,
   getAllLinks,
   getLinkById,
@@ -12,6 +13,7 @@ router
   .get("/", getAllLinks)
   .put("/:id", editLink)
   .get("/:id", getLinkById)
-  .post("/", addLink);
+  .post("/", addLink)
+  .delete("/:id", deleteLink);
 
 export default router;

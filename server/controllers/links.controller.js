@@ -107,3 +107,32 @@ export const addLink = async (req, res) => {
     });
   }
 };
+
+// DELETE
+
+export const deleteLink = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    console.log("idddd", id);
+
+    const deletedLink = await Link.findByIdAndDelete(id);
+
+    if (deletedLink) {
+      res.status(200).json({
+        message: "Link deteted successfully",
+        deletedLink,
+      });
+    } else {
+      // check status code later
+      res.status(501).json({
+        message: "Soemthing went wrong while deleting",
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      message: "something went wrong",
+      error: e.message,
+    });
+  }
+};
