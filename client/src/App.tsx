@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import { HomeScreen, Layout, NewsDetails, SubmitNews } from "./screens";
+import { HomeScreen, NewsDetails, SubmitNews } from "./screens";
 
 function App() {
   return (
