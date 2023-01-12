@@ -17,8 +17,8 @@ export const BackButton = styled.div`
 
 export const NewsDetailsContainer = styled.div`
   background-color: #fff;
-  max-width: 1022px;
-  margin: 0 auto;
+  /* max-width: 1022px;
+  margin: 0 auto; */
   border: 1px solid #e2e8f0;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
   border-radius: 0.5px;

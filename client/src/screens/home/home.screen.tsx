@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { News } from "../../components/intex";
+import { Container, News } from "../../components";
 import { Layout } from "../layout/layout.component";
 
 export const HomeScreen = () => {
@@ -23,7 +23,7 @@ export const HomeScreen = () => {
   const LinksContainer = styled.div`
     background-color: #fff;
     max-width: 1022px;
-    margin: 0 auto;
+    margin-top: 40px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
     border-radius: 0.5px;
@@ -37,7 +37,7 @@ export const HomeScreen = () => {
   };
 
   return (
-    <div>
+    <Container>
       <>
         <LinksContainer>
           {news.map((n: any, index: number) => (
@@ -47,6 +47,6 @@ export const HomeScreen = () => {
           ))}
         </LinksContainer>
       </>
-    </div>
+    </Container>
   );
 };
