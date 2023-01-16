@@ -3,10 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { News } from "../../components/intex";
+import { Container, News } from "../../components";
 import {
   BackButton,
-  Container,
   FormContainer,
   NewsDetailsContainer,
 } from "./news-details.screen.styles";
@@ -108,8 +107,8 @@ export const NewsDetails = () => {
           aria-hidden="true"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
           ></path>
         </svg>{" "}
