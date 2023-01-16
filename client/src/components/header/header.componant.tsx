@@ -1,25 +1,30 @@
+import { Link } from "react-router-dom";
 import { Container } from "../layout/container";
-import { Navs, NavContainer } from "./header.component.styles";
+import { NavbarContainer } from "./header.component.styles";
 
 export const Header = () => {
   return (
-    <>
-      <NavContainer>
-        <Navs>
-          <div className="nav-container">
-            Hacker News
-            <nav>
-              <ul>
-                <li>New</li>
-                <li>Top</li>
-                <li>Search</li>
-                <li>Submit</li>
-              </ul>
-            </nav>
-          </div>
-          <button>Login</button>
-        </Navs>
-      </NavContainer>
-    </>
+    <NavbarContainer>
+      <nav>
+        <ul>
+          <h2>Hacker News</h2>
+          <li>
+            <Link to="/new">New</Link>
+          </li>
+          <li>
+            <Link to="/top">Top</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/search">Search</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/submit">Submit</Link>
+          </li>
+        </ul>
+        <button>Login</button>
+      </nav>
+    </NavbarContainer>
   );
 };
