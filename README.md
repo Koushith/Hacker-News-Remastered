@@ -10,3 +10,4 @@ TODO
 - [ ] Comments and nested comments
 - [ ] Upvote
 - [ ] Code Refactors
+- [ ] Refactor navigation
