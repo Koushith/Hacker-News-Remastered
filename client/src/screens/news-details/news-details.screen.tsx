@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { Container, News } from "../../components";
 import {
   BackButton,
+  CommentBoxContainer,
+  CommentListContainer,
   FormContainer,
   NewsDetailsContainer,
 } from "./news-details.screen.styles";
@@ -139,47 +141,87 @@ export const NewsDetails = () => {
         </LinksWrapper>
       </NewsDetailsContainer>
       {isCommentable && (
-        <>
-          <textarea name="text" cols={30} rows={10}></textarea>
-        </>
+        <CommentBoxContainer>
+          <textarea
+            className="text-area"
+            name="text"
+            cols={30}
+            rows={5}
+            placeholder="Enter your comment"
+          ></textarea>
+
+          <button>Add Comment</button>
+        </CommentBoxContainer>
       )}
 
-      {/* {isEdit && (
-        <>
-          <div style={{ marginTop: "40px" }}>Edit form</div>
-          <div>
-            <label htmlFor="title">title</label>
-            <input
-              type="text"
-              placeholder={news.title}
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+      <CommentListContainer>
+        <h2>Comments</h2>
+
+        <div className="comments-container">
+          <div className="actions">
+            <p className="user-name">Koushith</p>{" "}
+            <span className="comment-time">less than a min ago</span> |{" "}
+            <span className="edit-comment">edit</span> |{" "}
+            <span className="delete-comment">delete</span>
           </div>
-          <div>
-            <label htmlFor="link">link</label>
-            <input
-              type="text"
-              placeholder={news.link}
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-            />
+
+          <p className="comment">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
+            quidem mollitia natus, dolor consectetur distinctio? Tempore
+            laudantium nisi ullam sequi eligendi. Esse dolorum recusandae
+            eligendi quis harum quia fugiat eveniet.
+          </p>
+        </div>
+
+        <div className="comments-container">
+          <div className="actions">
+            <p className="user-name">Koushith</p>{" "}
+            <span className="comment-time">less than a min ago</span> |{" "}
+            <span className="edit-comment">edit</span> |{" "}
+            <span className="delete-comment">delete</span>
           </div>
-          <div>
-            <label htmlFor="category">
-              category- {category}
-              <input
-                type="text"
-                placeholder={news.category}
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              />
-            </label>
+
+          <p className="comment">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
+            quidem mollitia natus, dolor consectetur distinctio? Tempore
+            laudantium nisi ullam sequi eligendi. Esse dolorum recusandae
+            eligendi quis harum quia fugiat eveniet.
+          </p>
+        </div>
+
+        <div className="comments-container">
+          <div className="actions">
+            <p className="user-name">Koushith</p>{" "}
+            <span className="comment-time">less than a min ago</span> |{" "}
+            <span className="edit-comment">edit</span> |{" "}
+            <span className="delete-comment">delete</span>
           </div>
-        
-          <button onClick={editSaveHandler}>Save Changes</button>
-        </>
-      )} */}
+
+          <p className="comment">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
+            quidem mollitia natus, dolor consectetur distinctio? Tempore
+            laudantium nisi ullam sequi eligendi. Esse dolorum recusandae
+            eligendi quis harum quia fugiat eveniet.
+          </p>
+        </div>
+
+        <div className="comments-container">
+          <div className="actions">
+            <p className="user-name">Koushith</p>{" "}
+            <span className="comment-time">less than a min ago</span> |{" "}
+            <span className="edit-comment">edit</span> |{" "}
+            <span className="delete-comment">delete</span>
+          </div>
+
+          <p className="comment">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse
+            quidem mollitia natus, dolor consectetur distinctio? Tempore
+            laudantium nisi ullam sequi eligendi. Esse dolorum recusandae
+            eligendi quis harum quia fugiat eveniet.
+          </p>
+        </div>
+      </CommentListContainer>
+
       {isEdit && (
         <FormContainer>
           <div>
