@@ -6,4 +6,5 @@ export enum RoutePaths {
   submit = "submit",
   top = "top",
   search = "search",
+  profile = "profile",
 }

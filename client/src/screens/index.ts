@@ -9,3 +9,5 @@ export * from "./auth/register.screen";
 
 export * from "./search/search.screen";
 export * from "./top/top.screen";
+
+export * from "./profile/profile.screen";

@@ -9,6 +9,7 @@ import {
   HomeScreen,
   LoginScreen,
   NewsDetails,
+  ProfileScreen,
   RegisterScreen,
   SearchScreen,
   SubmitNews,
@@ -26,6 +27,7 @@ function App() {
         <Route path={RoutePaths.submit} element={<SubmitNews />} />
         <Route path={RoutePaths.top} element={<TopScreen />} />
         <Route path={RoutePaths.search} element={<SearchScreen />} />
+        <Route path={RoutePaths.profile} element={<ProfileScreen />} />
       </Route>
     </Routes>
   );
