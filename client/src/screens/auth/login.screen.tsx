@@ -9,20 +9,12 @@ export const LoginScreen = () => {
       <FormContainer>
         <div>
           <label htmlFor="title">Email</label>
-          <input
-            type="text"
-            placeholder="Johbdoe@domain.com"
-            value="sdfsdfsdf"
-          />
+          <input type="text" placeholder="Johbdoe@domain.com" />
         </div>
 
         <div>
           <label htmlFor="title">Password</label>
-          <input
-            type="text"
-            placeholder="enter your password"
-            value="sdfsdfsdf"
-          />
+          <input type="text" placeholder="enter your password" />
         </div>
 
         <p onClick={() => navigate("/register")}>
