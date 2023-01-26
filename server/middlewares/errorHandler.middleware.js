@@ -6,3 +6,5 @@ export const errorHandler = (err, req, res, next) => {
   });
   next();
 };
+
+// i have no idea what the heck is this- i wrote this 3months ago. reist later

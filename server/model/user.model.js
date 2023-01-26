@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Link } from "./links.model.js";
 
 const userSchema = mongoose.Schema({
   name: {
@@ -14,5 +15,7 @@ const userSchema = mongoose.Schema({
     required: true,
   },
 });
+
+//Todo - has the password
 
 export const User = mongoose.model("User", userSchema);
