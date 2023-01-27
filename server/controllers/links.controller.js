@@ -24,8 +24,11 @@ export const getAllLinks = async (req, res) => {
 // GET- get specific link
 
 export const getLinkById = async (req, res) => {
+  console.log("single link- get by id was called");
   try {
     const { id } = req.params;
+
+    console.log("this was called", id);
 
     const link = await Link.findById(id);
 
@@ -52,7 +55,7 @@ export const editLink = async (req, res) => {
     const { title, category, link } = req.body;
 
     console.log({ title, category, link, id });
-
+    console.log("edit link was called");
     const _link = await Link.findByIdAndUpdate(id, {
       title,
       category,
@@ -77,7 +80,7 @@ export const editLink = async (req, res) => {
 export const addLink = async (req, res) => {
   try {
     const { title, link, category, upVotes, tags, discussions } = req.body;
-
+    console.log("add link was called");
     const createLink = await Link.create({
       title,
       link,
@@ -102,8 +105,8 @@ export const addLink = async (req, res) => {
   } catch (error) {
     // todo- check status codes
     res.status(400).json({
-      message: "something went wrong",
-      error: e.message,
+      message: "something went wrong. from add link",
+      error: error.message,
     });
   }
 };
@@ -132,6 +135,41 @@ export const deleteLink = async (req, res) => {
   } catch (error) {
     res.status(400).json({
       message: "something went wrong",
+      error: error.message,
+    });
+  }
+};
+
+// upvote -post
+
+export const upVotePost = (req, res) => {
+  const { upvote } = req.body;
+  const { id } = req.params;
+
+  // get the link
+
+  // user check- user should be able to upvote only once- ignore this for now
+
+  // if success returm
+  console.log("upvote royte as called", id);
+  try {
+    let link = Link.findByIdAndUpdate(id, {
+      upVotes: upvote,
+    });
+
+    if (link) {
+      res.status(200).json({
+        message: "Success, upvotes",
+        link,
+      });
+    } else {
+      res.status(401).json({
+        message: "could not upvote",
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      message: "something went wrong. from upvote...",
       error: error.message,
     });
   }

@@ -5,15 +5,18 @@ import {
   editLink,
   getAllLinks,
   getLinkById,
+  upVotePost,
 } from "../controllers/links.controller.js";
 
 const router = express.Router();
 
+router.route("/").get(getAllLinks).post(addLink);
+
 router
-  .get("/", getAllLinks)
-  .put("/:id", editLink)
-  .get("/:id", getLinkById)
-  .post("/", addLink)
-  .delete("/:id", deleteLink);
+  .route("/:id")
+  .post(upVotePost)
+  .put(editLink)
+  .get(getLinkById)
+  .delete(deleteLink);
 
 export default router;
