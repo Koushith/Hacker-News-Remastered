@@ -1,6 +1,9 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+// @ts-ignore
+// import VoteIcon from "../../assets/icons/upVote.svg";
+import { VoteIcon } from "../../assets/icons/voteIcon";
 
 const LinksWrapper = styled.div`
   border-bottom: 1px solid #e2e8f0;
@@ -8,8 +11,23 @@ const LinksWrapper = styled.div`
   display: flex;
   gap: 24px;
 
-  .upvote {
-    margin-left: 16px;
+  .upvote-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    p {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .icon {
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      /* transform: rotate(180deg); */
+    }
   }
 
   .news-container {
@@ -44,9 +62,14 @@ export const News = (props: any) => {
 
   return (
     <LinksWrapper key={news._id}>
-      <div>
-        {index + 1} <span className="upvote">upvote</span>
+      <div className="upvote-container">
+        <p> {index + 1} </p>
+        <span className="upvote">
+          {/* <img src={VoteIcon} alt="icon" /> */}
+          <VoteIcon className="icon" />
+        </span>
       </div>
+
       <div className="news-container">
         <h4
           className="link"
