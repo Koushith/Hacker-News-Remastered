@@ -65,7 +65,6 @@ export const News = (props: any) => {
       <div className="upvote-container">
         <p> {index + 1} </p>
         <span className="upvote">
-          {/* <img src={VoteIcon} alt="icon" /> */}
           <VoteIcon className="icon" />
         </span>
       </div>

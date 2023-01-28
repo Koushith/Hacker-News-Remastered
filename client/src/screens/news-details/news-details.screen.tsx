@@ -3,7 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { VoteIcon } from "../../assets/icons/voteIcon";
 import { Container, News } from "../../components";
+import { flexCenter } from "../../utils";
 import {
   BackButton,
   CommentBoxContainer,
@@ -17,6 +19,10 @@ const LinksWrapper = styled.div`
   padding: 24px 20px;
   display: flex;
   gap: 24px;
+
+  .upvote-container {
+    ${flexCenter}
+  }
 
   .upvote {
     margin-left: 16px;
@@ -118,8 +124,8 @@ export const NewsDetails = () => {
 
       <NewsDetailsContainer>
         <LinksWrapper key={news._id}>
-          <div>
-            <span className="upvote">upvote</span>
+          <div className="upvote-container">
+            <VoteIcon className="icon" />
           </div>
           <div className="news-container">
             <h4
