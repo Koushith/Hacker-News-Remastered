@@ -16,6 +16,9 @@ const LinksWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 20px;
+    .upvote {
+      margin-top: 2px;
+    }
     p {
       font-size: 16px;
       font-weight: 700;
@@ -50,6 +53,7 @@ const LinksWrapper = styled.div`
       span {
         margin: 0 4px 0 4px;
         color: #f56565;
+        cursor: pointer;
       }
     }
   }
@@ -78,8 +82,11 @@ export const News = (props: any) => {
         </h4>
 
         <div className="actions-container">
-          <p>0 pts by koushith </p> <span>Discuss</span>| <span>Edit</span>|{" "}
-          <span onClick={deleteHandler}>Delete</span>
+          <p>0 pts by koushith </p>{" "}
+          <span onClick={() => navigate(`/news-details/${news._id}`)}>
+            Discuss
+          </span>
+          | <span>Edit</span>| <span onClick={deleteHandler}>Delete</span>
         </div>
       </div>
     </LinksWrapper>

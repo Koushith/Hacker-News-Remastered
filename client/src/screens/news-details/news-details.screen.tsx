@@ -1,57 +1,18 @@
-import { isEditable } from "@testing-library/user-event/dist/utils";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { VoteIcon } from "../../assets/icons/voteIcon";
 import { Container, News } from "../../components";
-import { flexCenter } from "../../utils";
+
 import {
   BackButton,
   CommentBoxContainer,
   CommentListContainer,
   FormContainer,
   NewsDetailsContainer,
+  LinksWrapper,
 } from "./news-details.screen.styles";
-
-const LinksWrapper = styled.div`
-  border-bottom: 1px solid #e2e8f0;
-  padding: 24px 20px;
-  display: flex;
-  gap: 24px;
-
-  .upvote-container {
-    ${flexCenter}
-  }
-
-  .upvote {
-    margin-left: 16px;
-  }
-
-  .news-container {
-    .link {
-      font-size: 18px;
-      span {
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 21px;
-      }
-    }
-
-    .actions-container {
-      margin-top: 10px;
-
-      p {
-        display: inline-block;
-      }
-
-      span {
-        margin: 0 4px 0 4px;
-        color: #f56565;
-      }
-    }
-  }
-`;
 
 export const NewsDetails = () => {
   const [isEdit, setIsEdit] = useState(false);

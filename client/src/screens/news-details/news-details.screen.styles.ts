@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { flexCenter } from "../../utils";
 
 export const Container = styled.div`
   max-width: 1022px;
@@ -153,6 +154,45 @@ export const CommentListContainer = styled.div`
       line-height: 21px;
       font-size: 14px;
       font-weight: 400;
+    }
+  }
+`;
+
+export const LinksWrapper = styled.div`
+  border-bottom: 1px solid #e2e8f0;
+  padding: 24px 20px;
+  display: flex;
+  gap: 24px;
+
+  .upvote-container {
+    ${flexCenter}
+  }
+
+  .upvote {
+    margin-left: 16px;
+  }
+
+  .news-container {
+    .link {
+      font-size: 18px;
+      span {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 21px;
+      }
+    }
+
+    .actions-container {
+      margin-top: 10px;
+
+      p {
+        display: inline-block;
+      }
+
+      span {
+        margin: 0 4px 0 4px;
+        color: #f56565;
+      }
     }
   }
 `;

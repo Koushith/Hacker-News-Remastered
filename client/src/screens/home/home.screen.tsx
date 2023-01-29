@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Container, News } from "../../components";
 import { Layout } from "../layout/layout.component";
+import { SearchBox } from "./home.styles";
 
 export const HomeScreen = () => {
   const [news, setNews] = useState<any>([]);
+
+  const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState(news);
 
   const fetAllNews = async () => {
     const {
@@ -20,9 +24,16 @@ export const HomeScreen = () => {
     fetAllNews();
   }, []);
 
+  useEffect(() => {
+    const searchString = news.filter((s: any) => {
+      return s.title.toLocaleLowerCase().includes(searchText);
+    });
+    setSearchResults(searchString);
+  }, [searchText, news]);
+
   const LinksContainer = styled.div`
     background-color: #fff;
-    max-width: 1022px;
+
     margin-top: 40px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
@@ -36,17 +47,27 @@ export const HomeScreen = () => {
     console.log("deleteeeeee", deleteNews);
   };
 
+  const searchHandler = (e: any) => {
+    setSearchText(e.target.value.toLocaleLowerCase());
+  };
+
   return (
     <Container>
-      <>
-        <LinksContainer>
-          {news.map((n: any, index: number) => (
-            <div key={n._id}>
-              <News news={n} index={index} deleteHandler={deleteHandler} />
-            </div>
-          ))}
-        </LinksContainer>
-      </>
+      <SearchBox>
+        <input
+          type="text"
+          placeholder="Search for Link"
+          onChange={searchHandler}
+          value={searchText}
+        />
+      </SearchBox>
+      <LinksContainer>
+        {searchResults.map((n: any, index: number) => (
+          <div key={n._id}>
+            <News news={n} index={index} deleteHandler={deleteHandler} />
+          </div>
+        ))}
+      </LinksContainer>
     </Container>
   );
 };

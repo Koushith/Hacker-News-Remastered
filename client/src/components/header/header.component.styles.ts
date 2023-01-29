@@ -9,7 +9,7 @@ export const NavbarContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1000px;
     height: 80px;
 
     ul {
