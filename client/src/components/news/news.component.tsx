@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 // @ts-ignore
@@ -62,6 +63,8 @@ const LinksWrapper = styled.div`
 export const News = (props: any) => {
   const { news, index, deleteHandler } = props;
 
+  const [deletePrompt, setDeletePrompt] = useState(false);
+
   const navigate = useNavigate();
 
   return (
@@ -86,7 +89,16 @@ export const News = (props: any) => {
           <span onClick={() => navigate(`/news-details/${news._id}`)}>
             Discuss
           </span>
-          | <span>Edit</span>| <span onClick={deleteHandler}>Delete</span>
+          | <span>Edit</span>|{" "}
+          {!deletePrompt && (
+            <span onClick={() => setDeletePrompt(!deletePrompt)}>Delete</span>
+          )}
+          {deletePrompt && (
+            <>
+              {" "}
+              <span> Confirm Delete</span> <span>Cancel</span>{" "}
+            </>
+          )}
         </div>
       </div>
     </LinksWrapper>

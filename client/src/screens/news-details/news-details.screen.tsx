@@ -24,6 +24,8 @@ export const NewsDetails = () => {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
 
+  const [deletePrompt, setDeletePrompt] = useState(false);
+
   const [category, setCategory] = useState(news.category);
   console.log("catttttt", category);
 
@@ -102,7 +104,23 @@ export const NewsDetails = () => {
                 Discuss
               </span>
               | <span onClick={() => setIsEdit(!isEdit)}>Edit</span>|{" "}
-              <span onClick={deleteHandler}>Delete</span>
+              {!deletePrompt && (
+                <span onClick={() => setDeletePrompt(!deletePrompt)}>
+                  Delete
+                </span>
+              )}
+              {deletePrompt && (
+                <>
+                  {" "}
+                  <span onClick={deleteHandler}> Confirm Delete</span> |
+                  <span
+                    style={{ color: "gray" }}
+                    onClick={() => setDeletePrompt(!deletePrompt)}
+                  >
+                    Cancel
+                  </span>{" "}
+                </>
+              )}
             </div>
           </div>
         </LinksWrapper>
