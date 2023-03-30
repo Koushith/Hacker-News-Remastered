@@ -12,6 +12,8 @@ export const HomeScreen = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState(news);
 
+  const [pages, setPages] = useState(1);
+
   const fetAllNews = async () => {
     const {
       data: { links },
@@ -51,6 +53,13 @@ export const HomeScreen = () => {
     setSearchText(e.target.value.toLocaleLowerCase());
   };
 
+  const handleNext = () => {
+    setPages((page) => page + 1);
+  };
+  const handlePrev = () => {
+    setPages((page) => page - 1);
+  };
+
   return (
     <Container>
       <SearchBox>
@@ -61,12 +70,21 @@ export const HomeScreen = () => {
           value={searchText}
         />
       </SearchBox>
+
+      <p>total results - {news.length}</p>
       <LinksContainer>
-        {searchResults.map((n: any, index: number) => (
-          <div key={n._id}>
-            <News news={n} index={index} deleteHandler={deleteHandler} />
-          </div>
-        ))}
+        {/* we want to show 5 links per page , slice(start,end) -> slice returns a sub array*/}
+        {searchResults
+          .slice(pages * 5 - 5, pages * 5)
+          .map((n: any, index: number) => (
+            <div key={n._id}>
+              <News news={n} index={index} deleteHandler={deleteHandler} />
+            </div>
+          ))}
+
+        <button onClick={handlePrev}>Left</button>
+        <h2>{pages}</h2>
+        <button onClick={handleNext}>Right</button>
       </LinksContainer>
     </Container>
   );
