@@ -71,7 +71,10 @@ export const HomeScreen = () => {
         />
       </SearchBox>
 
-      <p>total results - {news.length}</p>
+      <p>
+        {" "}
+        showing {pages} of - {news.length}{" "}
+      </p>
       <LinksContainer>
         {/* we want to show 5 links per page , slice(start,end) -> slice returns a sub array*/}
         {searchResults
@@ -84,6 +87,7 @@ export const HomeScreen = () => {
 
         <button onClick={handlePrev}>Left</button>
         <h2>{pages}</h2>
+
         <button onClick={handleNext}>Right</button>
       </LinksContainer>
     </Container>
