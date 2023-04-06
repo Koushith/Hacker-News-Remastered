@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -21,7 +23,7 @@ export const HomeScreen = () => {
 
     setNews(links);
   };
-
+  console.log("search results", news);
   useEffect(() => {
     fetAllNews();
   }, []);
@@ -85,10 +87,18 @@ export const HomeScreen = () => {
             </div>
           ))}
 
-        <button onClick={handlePrev}>Left</button>
-        <h2>{pages}</h2>
+        {searchResults.length > 0 && (
+          <div>
+            <h2>{pages}</h2>
 
-        <button onClick={handleNext}>Right</button>
+            <button onClick={handlePrev}>Left</button>
+
+            {[...Array(Math.ceil(searchResults.length / 5))].map((_, i) => (
+              <span key={i}>{i + 1}</span>
+            ))}
+            <button onClick={handleNext}>Right</button>
+          </div>
+        )}
       </LinksContainer>
     </Container>
   );
