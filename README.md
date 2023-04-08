@@ -10,7 +10,7 @@ TODO
 - [ ] Comments and nested comments
 - [ ] Upvote
 - [ ] Code Refactors
-- [ ] Refactor navigation
+- [x] Refactor navigation
 
 
 ![image](https://user-images.githubusercontent.com/30016242/214127260-da5f845d-5185-45fe-85e5-d925d2ee177a.png)
